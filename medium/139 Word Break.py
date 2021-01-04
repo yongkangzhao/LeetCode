@@ -27,7 +27,7 @@ from typing import List
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         self.wordDict = sorted(wordDict, key = lambda x:-len(x))
-        self.memo = {}
+        self.memo = set()
         return self.dfs(s)
     
     
@@ -35,10 +35,10 @@ class Solution:
         if s == '':
             return True
         if s in self.memo:
-            return self.memo[s]
+            return False
         for word in self.wordDict:
             if(s[:len(word)] == word):
                 if(self.dfs(s[len(word):])):
                     return True
-        self.memo[s] = False
+        self.memo.add(s)
         return False
