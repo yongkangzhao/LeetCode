@@ -29,5 +29,5 @@ class Solution:
         dp = [0, k, k * k]
         if n < 3: return dp[n]
         for _ in range(3, n + 1):
-            dp[1], dp[2] = dp[2], (dp[1] + dp[2]) * (k - 1)
+            dp[-2], dp[-1] = dp[-1], (dp[-1] + dp[-2]) * (k - 1)
         return dp[-1]
