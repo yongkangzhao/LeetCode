@@ -28,6 +28,6 @@ class Solution:
     def numWays(self, n: int, k: int) -> int:
         dp = [0, k, k * k]
         if n < 3: return dp[n]
-        for _ in range(3, n + 1):
+        for _ in range(2, n):
             dp[-2], dp[-1] = dp[-1], (dp[-1] + dp[-2]) * (k - 1)
         return dp[-1]
